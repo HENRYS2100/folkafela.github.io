@@ -1,269 +1,239 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Folkafe TexMex </title>
-<img src="logo folkafe.png" alt="Logo" width="150">
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #111;
-  color: white;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folkafe - Menú Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e63946; /* Rojo Tex-Mex */
+            --dark-color: #1a1a1a;
+            --light-color: #f8f9fa;
+            --accent-color: #ffb703;
+        }
 
-header {
-  background: #ffcc00;
-  color: black;
-  text-align: center;
-  padding: 15px;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.container {
-  padding: 15px;
-}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
 
-.section {
-  margin-bottom: 20px;
-}
+        header {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--primary-color);
+        }
 
-.section h2 {
-  color: #ffcc00;
-  border-bottom: 2px solid #ffcc00;
-}
+        header h1 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
 
-.item {
-  margin: 10px 0;
-}
+        header p {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
 
-button {
-  background: #25D366;
-  color: white;
-  border: none;
-  padding: 8px;
-  border-radius: 5px;
-}
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
 
-/* CARRITO */
-#carrito {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background: #1a1a1a;
-  padding: 15px;
-}
+        .category-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
 
-input {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 5px;
-  border: none;
-}
-</style>
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .product-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-order {
+            background-color: #25d366;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+
+        .btn-order:hover {
+            background-color: #128c7e;
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+
+        footer p { margin-bottom: 0.5rem; }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-<img src="images/logo-nuevo.png" alt="Logo" width="150">
-
-<h1>🌮 FOLKAFE TEXMEX </h1>
-<p>¡Pide desde tu celular! 📱🔥</p>
+    <h1>FOLKAFE</h1>
+    <p>TEX-MEX FOOD ECUADOR - SINCE 2015</p>
 </header>
 
-<div class="container">
+<div class="container" id="menu-container">
+    </div>
 
-<div class="section">
-<h2>🥨 Entradas</h2>
-
-<div class="item">
-<span class="item-name">Nachos Grande 🧀</span>
-<span class="price">$5.00</span>
-<div class="desc">Nachos con chili carne, pico de gallo, queso y guacamole.</div>
-<br>
-<button onclick="agregar('Nachos Grande',5)">Agregar</button>
-</div>
-
-<div class="item">
-<span class="item-name">Folks Chilli Fries 🍟</span>
-<span class="price">$5.00</span>
-<div class="desc">Papas fritas con chili, queso, tomate y pimientos.</div>
-<br>
-<button onclick="agregar('Folks Chilli Fries',5)">Agregar</button>
-</div>
-    
-<div class="section">
-<h2>🍔 Burgers</h2>
-
-<div class="item">
-La Patrona 👑 - $10
-<br>
-<button onclick="agregar('La Patrona',10)">Agregar</button>
-</div>
-
-<div class="item">
-Big Mouth 👄 - $7.00
-<br>
-<button onclick="agregar('Big Mouth',7.5)">Agregar</button>
-</div>
-
-<div class="section">
-<h2>🍗 Alitas</h2>
-<div class="item">
-<span class="item-name">6 Unidades</span>
-<span class="price">$5.00</span>
-<br>
-<button onclick="agregar('5 UN',5)">Agregar</button>
-</div>
-    
-<div class="item">
-<span class="item-name">10 Unidades</span>
-<span class="price">$8</span>
-<br>
-<button onclick="agregar('10 UN',8)">Agregar</button>
-</div>
-</div>
-
-<div class="section">
-<h2>🥤 Bebidas</h2>
-
-<div class="item">
-Pink Lemonade 🍋 - $2.00
-<br>
-<button onclick="agregar('Pink Lemonade',1.25)">Agregar</button>
-</div>
-    
-<div class="item">
-<span class="item-name">Milkshakes 🍦</span>
-<span class="price">$3.50</span>
-<br>
-<button onclick="agregar('Milkshakes',3.50)">Agregar</button>
-</div>
-</div>
-<div class="item">
-<span class="item-name">Frappe de oreo 🍦</span>
-<span class="price">$3.50</span>
-<br>
-<button onclick="agregar('Frappe de oreo',3.50)">Agregar</button>
-</div>
-<div class="item">
-<span class="item-name">Frappuccino 🍦</span>
-<span class="price">$3.50</span>
-<br>
-<button onclick="agregar('Frappucciono',3.50)">Agregar</button>
-</div>
-
-<button onclick="toggleCarrito()" id="btnCarrito">
-🛒
-</button>
-
-<style>
-#btnCarrito{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25D366;
-  color: white;
-  border: none;
-  padding: 15px;
-  border-radius: 50%;
-  font-size: 18px;
-}
-</style>
-  
-<!-- CARRITO -->
-<div id="carrito">
-<h3>🛒 Tu Pedido</h3>
-
-<div id="lista"></div>
-
-<p>Total: $<span id="total">0</span></p>
-
-<input id="nombre" placeholder="Tu nombre">
-<input id="direccion" placeholder="Dirección de entrega">
-<input id="telefono" placeholder="Teléfono">
-
-<button onclick="vaciar()">Vaciar</button>
-<button onclick="enviarPedido()">Enviar Pedido</button>
-</div>
+<footer>
+    <p><strong>FOLKAFE</strong></p>
+    <p>Contacto: +593 98 459 2931</p>
+    <p>Lago Agrio, Ecuador</p>
+    <p>© 2026 Todos los derechos reservados</p>
+</footer>
 
 <script>
-let carrito = {};
+    const whatsappNumber = "593984592931";
+    
+    // Datos extraídos del PDF
+    const menuData = [
+        {
+            category: "Entradas",
+            items: [
+                { name: "Nachos Grande", price: "5.00", desc: "Chillicarne, pico de gallo, queso fundido y guacamole." },
+                { name: "Nacho Clásico", price: "3.50", desc: "Nacho natural con guacamole y queso fundido." },
+                { name: "Folks Chilli Fries", price: "4.00", desc: "Papas fritas con chillicarne y queso fundido." }
+            ]
+        },
+        {
+            category: "Hamburguesas",
+            items: [
+                { name: "Normal", price: "3.50", desc: "Carne al grill, lechuga, cebolla, tomate y papas." },
+                { name: "Champiñón y Mozzarella", price: "5.00", desc: "Tocino, champiñones salteados y mozzarella." },
+                { name: "Folks Timer Burguer", price: "5.00", desc: "Cebolla salteada, tocino, queso cheddar y papas." },
+                { name: "Big Mouth Burguer", price: "7.00", desc: "Doble carne, doble cheddar y tocino." },
+                { name: "Jack Daniel's Burguer", price: "7.00", desc: "Salsa Jack Daniel's, tocino y queso cheddar." },
+                { name: "La Patrona", price: "10.00", desc: "Tiras de lomo, costilla de cerdo y cheddar." }
+            ]
+        },
+        {
+            category: "Alitas",
+            items: [
+                { name: "Alitas 6 Unidades", price: "5.00", desc: "Elige tu salsa: BBQ, Bourbon, Maracuyá, etc." },
+                { name: "Alitas 10 Unidades", price: "8.00", desc: "Elige tu salsa favorita." },
+                { name: "Alitas 20 Unidades", price: "15.00", desc: "Para compartir." }
+            ]
+        },
+        {
+                        ]
+        },
+        {
+            category: "Bebidas",
+            items: [
+                { name: "Pink Lemonade", price: "2.00", desc: "Limonada especial de la casa." },
+                { name: "Milkshakes", price: "3.50", desc: "Fresa, Chocolate o Mora." },
+                { name: "Frappe de Oreo", price: "3.50", desc: "Delicioso café helado con Oreo." },
+                { name: "Michelada Grande", price: "5.00", desc: "Maracuyá o Limón." }
+            ]
+        }
+    ];
 
-function agregar(nombre, precio){
-  if(!carrito[nombre]){
-    carrito[nombre] = {precio: precio, cantidad: 1};
-  } else {
-    carrito[nombre].cantidad++;
-  }
-  render();
-}
+    const container = document.getElementById('menu-container');
 
-function cambiar(nombre, delta){
-  carrito[nombre].cantidad += delta;
-  if(carrito[nombre].cantidad <= 0){
-    delete carrito[nombre];
-  }
-  render();
-}
+    menuData.forEach(section => {
+        const catTitle = document.createElement('h2');
+        catTitle.className = 'category-title';
+        catTitle.innerText = section.category;
+        container.appendChild(catTitle);
 
-function vaciar(){
-  carrito = {};
-  render();
-}
+        const grid = document.createElement('div');
+        grid.className = 'menu-grid';
 
-function render(){
-  let lista = document.getElementById("lista");
-  let total = 0;
-  lista.innerHTML = "";
+        section.items.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            
+            const message = encodeURIComponent(Hola Folkafe, me gustaría pedir: ${item.name} ($${item.price}));
+            
+            card.innerHTML = `
+                <div class="product-info">
+                    <h3>${item.name}</h3>
+                    <p>${item.desc}</p>
+                </div>
+                <div>
+                    <div class="price">$${item.price}</div>
+                    <a href="https://wa.me/${whatsappNumber}?text=${message}" class="btn-order" target="_blank">
+                        Pedir por WhatsApp
+                    </a>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
 
-  for(let item in carrito){
-    let data = carrito[item];
-    let subtotal = data.precio * data.cantidad;
-    total += subtotal;
-
-    lista.innerHTML += `
-    <div>
-      ${item} x${data.cantidad} - $${subtotal.toFixed(2)}
-      <button onclick="cambiar('${item}',1)">+</button>
-      <button onclick="cambiar('${item}',-1)">-</button>
-    </div>
-    `;
-  }
-
-  document.getElementById("total").innerText = total.toFixed(2);
-}
-
-function enviarPedido(){
-  let nombre = document.getElementById("nombre").value;
-  let direccion = document.getElementById("direccion").value;
-  let telefono = document.getElementById("telefono").value;
-
-  if(!nombre || !direccion || !telefono){
-    alert("Completa tus datos");
-    return;
-  }
-
-  let mensaje = `Hola, soy ${nombre}%0A`;
-  mensaje += `📍 Dirección: ${direccion}%0A`;
-  mensaje += `📞 Tel: ${telefono}%0A%0A`;
-  mensaje += "🛒 Pedido:%0A";
-
-  let total = 0;
-
-  for(let item in carrito){
-    let data = carrito[item];
-    let subtotal = data.precio * data.cantidad;
-    mensaje += `- ${item} x${data.cantidad} ($${subtotal.toFixed(2)})%0A`;
-    total += subtotal;
-  }
-
-  mensaje += `%0ATotal: $${total.toFixed(2)}`;
-
-  window.open("https://wa.me/+593980918053?text=" + mensaje, "_blank");
-}
+        container.appendChild(grid);
+    });
 </script>
 
 </body>
