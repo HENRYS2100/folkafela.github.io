@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+[8:25 a.m., 13/4/2026] Henry Palma: <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -22,216 +22,262 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
+            color: var(--da…
+[8:50 a.m., 13/4/2026] H3nrys: “Haz que el diseño sea similar a apps como Uber Eats o Rappi.”
+[8:53 a.m., 13/4/2026] Henry Palma: <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folkafe | Pedir Online</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --uber-green: #06C167;
+            --rappi-orange: #FF441F;
+            --bg-gray: #F6F6F6;
+            --text-main: #000000;
+            --text-muted: #545454;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: white;
+            color: var(--text-main);
+            padding-bottom: 80px;
+        }
+
+        /* Header Estilo App */
         header {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            border-bottom: 5px solid var(--primary-color);
-        }
-
-        header h1 {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 4rem;
-            letter-spacing: 3px;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-        }
-
-        .category-title {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin: 2rem 0 1rem;
-            border-bottom: 2px solid var(--primary-color);
-            display: inline-block;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .product-card {
+            padding: 20px;
             background: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .delivery-info {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* Barra de Categorías Horizontal (Estilo Uber Eats) */
+        .category-nav {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 15px 20px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            gap: 20px;
+            scrollbar-width: none;
         }
+        .category-nav::-webkit-scrollbar { display: none; }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .product-info p {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-        }
-
-        .btn-order {
-            background-color: #25d366;
-            color: white;
+        .category-nav a {
             text-decoration: none;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Contenedor de Productos */
+        .section-container { padding: 20px; }
+
+        .category-heading {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 20px 0 15px;
+        }
+
+        /* Card estilo Horizontal */
+        .product-card {
+            display: flex;
+            justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .product-info {
+            flex: 1;
+            padding-right: 15px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .product-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Imagen o Placeholder cuadrado lateral */
+        .product-img {
+            width: 100px;
+            height: 100px;
+            background: #eee;
+            border-radius: 8px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .add-btn {
+            position: absolute;
+            bottom: -8px;
+            right: 10px;
+            background: white;
+            color: var(--uber-green);
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: background 0.3s;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .btn-order:hover {
-            background-color: #128c7e;
-        }
-
-        footer {
-            background: var(--dark-color);
+        /* Botón Flotante de Carrito/WhatsApp */
+        .cart-footer {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: var(--text-main);
             color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            margin-top: 3rem;
+            padding: 16px 24px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
         }
 
-        footer p { margin-bottom: 0.5rem; }
+        .cart-footer:hover { transform: scale(1.02); transition: 0.2s; }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 2.5rem; }
-            .menu-grid { grid-template-columns: 1fr; }
+        @media (min-width: 768px) {
+            .section-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>FOLKAFE</h1>
-    <p>TEX-MEX FOOD ECUADOR - SINCE 2015</p>
+    <div class="brand">Folkafe</div>
+    <div class="delivery-info">Cerrado • Abre a las 17:00 • Lago Agrio</div>
 </header>
 
-<div class="container" id="menu-container">
+<div class="category-nav">
+    <a href="#hamburguesas">Hamburguesas</a>
+    <a href="#entradas">Entradas</a>
+    <a href="#tacos">Tacos</a>
+    <a href="#alitas">Alitas</a>
+    <a href="#bebidas">Bebidas</a>
+</div>
+
+<div class="section-container" id="main-menu">
     </div>
 
-<footer>
-    <p><strong>FOLKAFE</strong></p>
-    <p>Contacto: +593 98 459 2931</p>
-    <p>Lago Agrio, Ecuador</p>
-    <p>© 2026 Todos los derechos reservados</p>
-</footer>
+<a href="https://wa.me/593984592931" class="cart-footer" id="whatsapp-trigger">
+    <span style="font-weight: 600;">Ver pedido</span>
+    <span>Folkafe Online</span>
+</a>
 
 <script>
-    const whatsappNumber = "593984592931";
-    
-    // Datos extraídos del PDF
     const menuData = [
         {
-            category: "Entradas",
-            items: [
-                { name: "Nachos Grande", price: "5.00", desc: "Chillicarne, pico de gallo, queso fundido y guacamole." },
-                { name: "Nacho Clásico", price: "3.50", desc: "Nacho natural con guacamole y queso fundido." },
-                { name: "Folks Chilli Fries", price: "4.00", desc: "Papas fritas con chillicarne y queso fundido." }
-            ]
-        },
-        {
             category: "Hamburguesas",
+            id: "hamburguesas",
             items: [
-                { name: "Normal", price: "3.50", desc: "Carne al grill, lechuga, cebolla, tomate y papas." },
-                { name: "Folks Timer Burguer", price: "5.00", desc: "Cebolla salteada, tocino, queso cheddar y papas." },
-                { name: "Big Mouth Burguer", price: "7.00", desc: "Doble carne, doble cheddar y tocino." },
-                { name: "Jack Daniel's Burguer", price: "7.00", desc: "Salsa Jack Daniel's, tocino y queso cheddar." },
-                { name: "La Patrona", price: "10.00", desc: "Tiras de lomo, costilla de cerdo y cheddar." }
+                { name: "Normal", price: "3.50", desc: "Carne al grill, lechuga, cebolla, tomate y papas.", img: "🍔" },
+                { name: "Champiñón y Mozzarella", price: "5.50", desc: "Tocino, champiñones salteados y mozzarella.", img: "🍄" },
+                { name: "Folks Timer Burguer", price: "5.00", desc: "Cebolla salteada, tocino, queso cheddar y papas.", img: "🥓" },
+                { name: "Big Mouth Burguer", price: "7.50", desc: "Doble carne, doble cheddar y tocino.", img: "🔥" }
             ]
         },
         {
-            category: "Alitas",
+            category: "Tacos & Más",
+            id: "tacos",
             items: [
-                { name: "Alitas 6 Unidades", price: "5.00", desc: "Elige tu salsa: BBQ, Bourbon, Maracuyá, etc." },
-                { name: "Alitas 10 Unidades", price: "8.00", desc: "Elige tu salsa favorita." },
-                { name: "Alitas 20 Unidades", price: "15.00", desc: "Para compartir." }
+                { name: "Tacos Pork Carnitas", price: "5.00", desc: "Tacos de costilla de cerdo con sazón tex-mex.", img: "🌮" },
+                { name: "Enchilada de Pollo", price: "6.50", desc: "Pollo ranchero, queso y crema agria.", img: "🥘" }
             ]
         },
         {
-                        ]
-        },
-        {
-            category: "Bebidas",
+            category: "Entradas",
+            id: "entradas",
             items: [
-                { name: "Pink Lemonade", price: "2.00", desc: "Limonada especial de la casa." },
-                { name: "Milkshakes", price: "3.50", desc: "Fresa, Chocolate o Mora." },
-                { name: "Frappe de Oreo", price: "3.50", desc: "Delicioso café helado con Oreo." },
-                { name: "Michelada Grande", price: "5.00", desc: "Maracuyá o Limón." }
+                { name: "Nachos Grande", price: "5.00", desc: "Chillicarne, pico de gallo, queso fundido y guacamole.", img: "🍟" },
+                { name: "Chesse Poppers", price: "6.00", desc: "Bocaditos de mozzarella y cheddar con cilantro.", img: "🧀" }
             ]
         }
     ];
 
-    const container = document.getElementById('menu-container');
+    const menuContainer = document.getElementById('main-menu');
+    const whatsappBase = "https://wa.me/593984592931?text=";
 
     menuData.forEach(section => {
-        const catTitle = document.createElement('h2');
-        catTitle.className = 'category-title';
-        catTitle.innerText = section.category;
-        container.appendChild(catTitle);
-
-        const grid = document.createElement('div');
-        grid.className = 'menu-grid';
+        const header = document.createElement('h2');
+        header.className = 'category-heading';
+        header.id = section.id;
+        header.innerText = section.category;
+        menuContainer.appendChild(header);
 
         section.items.forEach(item => {
             const card = document.createElement('div');
             card.className = 'product-card';
+            const msg = encodeURIComponent(¡Hola! Quisiera ordenar: ${item.name} ($${item.price}));
             
-            const message = encodeURIComponent(Hola Folkafe, me gustaría pedir: ${item.name} ($${item.price}));
-            
+            card.onclick = () => window.open(whatsappBase + msg, '_blank');
+
             card.innerHTML = `
                 <div class="product-info">
-                    <h3>${item.name}</h3>
-                    <p>${item.desc}</p>
+                    <div class="product-name">${item.name}</div>
+                    <div class="product-desc">${item.desc}</div>
+                    <div class="product-price">$${item.price}</div>
                 </div>
-                <div>
-                    <div class="price">$${item.price}</div>
-                    <a href="https://wa.me/${whatsappNumber}?text=${message}" class="btn-order" target="_blank">
-                        Pedir por WhatsApp
-                    </a>
+                <div class="product-img">
+                    <span style="font-size:40px; position:absolute; top:25%; left:25%;">${item.img}</span>
+                    <div class="add-btn">+</div>
                 </div>
             `;
-            grid.appendChild(card);
+            menuContainer.appendChild(card);
         });
-
-        container.appendChild(grid);
     });
 </script>
 
